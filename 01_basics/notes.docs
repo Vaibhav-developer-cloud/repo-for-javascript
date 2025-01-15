@@ -1,0 +1,489 @@
+1.What are the different data types in JavaScript?
+
+Primitive Data Types
+These are immutable and represent a single value. because stack memory cannot change original value
+
+1.String
+Represents textual data.
+Example:
+javascript
+let name = "John";
+
+2.Number
+Represents both integer and floating-point numbers.
+Example:
+javascript
+
+let age = 25;
+let price = 19.99;
+
+3.BigInt
+Represents integers with arbitrary precision (introduced in ES2020).
+Example:
+javascript
+let bigNumber = 1234567890123456789012345678901234567890n;
+
+4.Boolean
+Represents a logical entity and can have only two values: true or false.
+Example:
+javascript
+let isActive = true;
+
+5.Undefined
+A variable that has been declared but not assigned a value.
+Example:
+javascript
+let x;
+console.log(x); // undefined
+
+6.Null
+Represents the intentional absence of any object value.
+Example:
+javascript
+
+let y = null;
+
+7.Symbol
+A unique and immutable value used as an identifier for object properties (introduced in ES6).
+Example:
+javascript
+let sym = Symbol('description');
+
+Non-Primitive Data Types
+These are mutable and can hold collections of data or more complex entities.
+
+Object
+Used to store collections of data and more complex entities.
+Example:
+javascript
+let person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 30,
+};
+
+Array
+A special type of object used to store ordered collections.
+Example:
+javascript
+let numbers = [1, 2, 3, 4, 5];
+
+Function
+A callable object that executes a block of code.
+Example:
+javascript
+function greet() {
+  console.log("Hello, world!");
+}
+
+Special Notes
+Dynamic Typing: JavaScript is dynamically typed, meaning the same variable can hold different data types at different times.
+
+javascript
+let data = 42;      // Number
+data = "Hello";     // String
+Type Checking: Use the typeof operator to check a variable's type.
+
+javascript
+
+console.log(typeof 42);        // "number"
+console.log(typeof "Hello");   // "string"
+console.log(typeof null);      // "object" (a known quirk in JavaScript)
+console.log(typeof undefined); // "undefined
+
+
+2.What is NaN?
+NaN stands for "Not a Number". It is a special floating-point value defined by the IEEE 754 standard to represent undefined or unrepresentable values, particularly in numerical computations.
+
+Examples of how NaN can occur:
+Invalid mathematical operations:
+0.0 / 0.0 → NaN
+sqrt(-1) (in real numbers) → NaN
+Type casting errors:
+Converting non-numeric strings to numbers (e.g., float('abc') → NaN).
+
+
+3.What is the difference between typeof and instanceof?
+
+
+
+
+answer?
+
+
+
+4.How does JavaScript handle type coercion?
+Example: "5" + 5 vs. "5" - 5
+Summary Table:
+Expression	Result	Type
+"5" + 5	"55"	String
+"5" - 5	0	Number
+"5" * 5	25	Number
+"5" / 5	1	Number
+"5" + true	"5true"	String
+"5" - true	4	Number
+
+
+5.What are template literals, and how are they different from regular strings?
+
+Differences Between Template Literals and Regular Strings
+Feature	Template Literals	Regular Strings
+Syntax	Uses backticks: `	Uses single ' or double " quotes
+String Interpolation	Supports interpolation: ${expression}	Requires concatenation with +
+Multi-line Strings	Directly supports multi-line strings	Requires \n and concatenation for new lines
+Tagged Templates	Can process literals using custom functions	Not supported
+Examples
+1. String Interpolation:
+javascript
+let name = 'Niket';
+let greeting = `Hello, ${name}!`; // Template literal
+console.log(greeting); // Output: Hello, Niket!
+
+let greeting2 = 'Hello, ' + name + '!'; // Regular string
+console.log(greeting2); // Output: Hello, Niket!
+2. Multi-line Strings:
+javascript
+
+let multiLine = `This is a
+multi-line string.`; // Template literal
+console.log(multiLine);
+// Output:
+// This is a
+// multi-line string.
+
+let multiLine2 = 'This is a\nmulti-line string.'; // Regular string
+console.log(multiLine2);
+// Output:
+// This is a
+// multi-line string.
+3. Tagged Templates:
+javascript
+
+function tagExample(strings, value) {
+  return `${strings[0]}${value.toUpperCase()}${strings[1]}`;
+}
+let result = tagExample`Hello, ${'niket'}!`; // Tagged template
+console.log(result); // Output: Hello, NIKET!
+In regular strings, such processing would require more complex logic.
+
+
+
+6.What is the difference between mutable and immutable data types in JavaScript?
+
+Aspect	Mutable	Immutable
+Examples	Objects, Arrays	Strings, Numbers, Boolean, etc.
+Can Modify Value	Yes	No
+Operation Result	Changes original data	Creates new data
+Memory Efficiency	Can reuse existing memory location	May require new memory allocation
+Pass by	Reference	Value
+
+7.What is the difference between var, let, and const in terms of data type assignment?
+
+1. var:
+Reassignment: Variables declared with var can be reassigned to a new value of the same or different data type.
+javascript
+Copy code
+var x = 10; // Number
+x = "Hello"; // Now a string
+Scope: It is function-scoped, meaning it is only accessible within the function it is declared in, or globally if declared outside any function.
+Hoisting: Variables declared with var are hoisted to the top of their scope and initialized with undefined.
+2. let:
+Reassignment: Variables declared with let can also be reassigned to a new value of the same or different data type.
+javascript
+Copy code
+let y = 20; // Number
+y = true; // Now a boolean
+Scope: It is block-scoped, meaning it is only accessible within the block (enclosed by {}) where it is defined.
+Hoisting: Variables declared with let are hoisted but not initialized. Accessing them before declaration results in a ReferenceError.
+3. const:
+Reassignment: Variables declared with const cannot be reassigned after their initial assignment. However, if the value is an object or array, you can still modify its contents.
+javascript
+Copy code
+const z = 30; // Number
+// z = 40; // Error: Assignment to constant variable
+
+const arr = [1, 2, 3];
+arr.push(4); // Modifying the array is allowed
+console.log(arr); // [1, 2, 3, 4]
+Scope: Like let, const is block-scoped.
+Hoisting: Variables declared with const are hoisted but not initialized. Accessing them before declaration results in a ReferenceError.
+
+console.log(a); // undefined (due to hoisting)
+var a = 10;
+console.log(a); // 10 (value assigned after hoisting)
+
+console.log(b); // ReferenceError: Cannot access 'b' before initialization
+let b = 20;
+console.log(b); // 20
+
+console.log(c); // ReferenceError: Cannot access 'c' before initialization
+const c = 30;
+console.log(c); // 30
+
+Feature	var	let	const
+Reassignable	Yes	Yes	No
+Scope	Function-scoped	Block-scoped	Block-scoped
+Hoisting	Hoisted (initialized to undefined)	Hoisted (no initialization)	Hoisted (no initialization)
+Data type change	Allowed	Allowed	Not allowed for reassignment
+
+exa:main for extra study
+for (var i = 0; i < 3; i++) {
+    setTimeout(() => {
+        console.log(i); // 3, 3, 3 (due to var being function-scoped)
+    }, 100);
+}
+
+// Using let
+for (let j = 0; j < 3; j++) {
+    setTimeout(() => {
+        console.log(j); // 0, 1, 2 (due to let being block-scoped)
+    }, 100);
+}
+
+Falsy Values
+A value is falsy if it evaluates to false when converted to a Boolean. The following are falsy values in JavaScript:
+
+false - The Boolean value false.
+0 - The number zero (both +0 and -0).
+"" (empty string) - A string with no characters.
+null - Represents the intentional absence of any object value.
+undefined - Represents an uninitialized or undefined value.
+NaN - A special number value representing "Not-a-Number".
+For example:
+
+javascript
+Copy code
+if (false) {
+  console.log('This will not run');
+}
+
+if (0) {
+  console.log('This will not run');
+}
+
+if ("") {
+  console.log('This will not run');
+}
+
+if (null) {
+  console.log('This will not run');
+}
+
+if (undefined) {
+  console.log('This will not run');
+}
+
+if (NaN) {
+  console.log('This will not run');
+}
+Truthy Values
+A value is truthy if it is considered true in a Boolean context. Everything that is not falsy is considered truthy. Some common truthy values include:
+
+Any non-zero number (e.g., 1, -1, 3.14).
+Any non-empty string (e.g., "hello", " ", "0").
+[] - An empty array.
+{} - An empty object.
+function() {} - A function.
+true - The Boolean value true.
+For example:
+
+javascript
+Copy code
+if (1) {
+  console.log('This will run');
+}
+
+if ("hello") {
+  console.log('This will run');
+}
+
+if ([]) {
+  console.log('This will run');
+}
+
+if ({}) {
+  console.log('This will run');
+}
+
+if (true) {
+  console.log('This will run');
+}
+
+How does JavaScript handle object and array destructuring?
+In object destructuring, you extract values from an object and assign them to variables. The syntax is based on the object keys.
+
+Example:
+javascript
+Copy code
+const person = {
+  name: "John",
+  age: 30,
+  city: "New York"
+};
+
+// Destructuring the object
+const { name, age, city } = person;
+
+console.log(name);  // John
+console.log(age);   // 30
+console.log(city);  // New York
+With Renaming:
+You can also rename variables while destructuring:
+
+javascript
+Copy code
+const { name: fullName, age: yearsOld } = person;
+
+console.log(fullName);  // John
+console.log(yearsOld);  // 30
+With Default Values:
+If a key is missing in the object, you can provide a default value:
+
+javascript
+Copy code
+const { name, country = "USA" } = person;
+
+console.log(country);  // USA (default value)
+2. Array Destructuring
+In array destructuring, you extract values from an array by their position (index) and assign them to variables.
+
+Example:
+javascript
+Copy code
+const numbers = [1, 2, 3, 4];
+
+// Destructuring the array
+const [first, second, third] = numbers;
+
+console.log(first);   // 1
+console.log(second);  // 2
+console.log(third);
+
+10.What are JavaScript Symbol data types, and when should you use them?
+The JavaScript Symbol is a primitive data type introduced in ECMAScript 6 (ES6). It is used to create unique, immutable identifiers for object properties. Symbols are primarily used to avoid name clashes and to create properties that are not easily accessed or modified by other code, ensuring that they remain unique and private.
+
+Key Characteristics of Symbols:
+Uniqueness: Every Symbol is unique. Even if you create two Symbols with the same description, they are still different.
+
+const symbol1 = Symbol("description");
+const symbol2 = Symbol("description");
+console.log(symbol1 === symbol2);  // false
+Immutability: Once a Symbol is created, its value cannot be changed.
+
+javascript
+Copy code
+const mySymbol = Symbol("immutable");
+// mySymbol = Symbol("new description");  // Error, cannot reassign
+Non-enumerability: Symbol properties are not enumerated in loops (e.g., for...in, Object.keys()), making them suitable for private object properties.
+
+javascript
+Copy code
+const person = {
+    name: "Alice",
+    [Symbol("age")]: 30
+};
+console.log(Object.keys(person));  // ["name"]
+Used for Meta-programming: Symbols are commonly used in ES6+ for defining "well-known symbols" that represent internal methods or behaviors of objects (e.g., Symbol.iterator, Symbol.toStringTag).
+
+11.Explain the differences between shallow copy and deep copy.
+
+re's an example demonstrating the difference between shallow copy and deep copy in Python:
+
+python
+Copy code
+import copy
+
+# Original list with nested list
+original_list = [1, 2, [3, 4]]
+
+# Shallow copy
+shallow_copy = copy.copy(original_list)
+
+# Deep copy
+deep_copy = copy.deepcopy(original_list)
+
+# Modify the nested list in the original list
+original_list[2][0] = 99
+
+# Print all lists to observe changes
+print("Original List:", original_list)
+print("Shallow Copy:", shallow_copy)
+print("Deep Copy:", deep_copy)
+Output:
+
+less
+Copy code
+Original List: [1, 2, [99, 4]]
+Shallow Copy: [1, 2, [99, 4]]
+Deep Copy: [1, 2, [3, 4]]
+In the shallow copy, the nested list is still shared between the original and the copy, so the change in the nested list is reflected in both.
+In the deep copy, the nested list is fully copied, so the change in the original list doesn't affect the deep copy.
+
+
+12.How does JavaScript handle comparison between different data types?
+Difference between == and ===.
+
+1. == (Loose Equality)
+The == operator compares values after converting them to a common type if they are of different types. This is called type coercion.
+For example:
+'5' == 5 → true (string '5' is converted to number 5).
+null == undefined → true (they are considered equal when using ==).
+false == 0 → true (because false is coerced into 0).
+2. === (Strict Equality)
+The === operator compares both the value and the type, meaning no type coercion occurs.
+For example:
+'5' === 5 → false (different types: string vs number).
+null === undefined → false (they are not the same type).
+false === 0 → false (different types: boolean vs number).
+
+
+What is the difference between pass-by-value and pass-by-reference?
+Which data types follow which approach?
+
+let x = 5;
+
+function changeValue(a) {
+  a = 10;
+}
+
+changeValue(x);
+console.log(x); // Outputs: 5
+
+referencelet person = { name: "John" };
+
+function changeName(obj) {
+  obj.name = "Jane";
+}
+
+changeName(person);
+console.log(person.name); // Outputs: Jan
+
+
+Advanced Questions
+What are BigInt and its use cases in JavaScript?
+What are tagged template literals, and how do they work?
+How can you use JavaScript's Set and Map for better data handling?
+What is the difference between an Array and an Array-like object?
+What are iterators and generators, and how do they work with data types like arrays or objects?
+Explain how to use WeakMap and WeakSet effectively.
+How does JavaScript handle type conversions explicitly?
+Examples: Number(), String(), Boolean(), etc.
+What is the difference between Object.freeze(), Object.seal(), and Object.preventExtensions()?
+Practical/Scenario-Based Questions
+How would you merge two objects in JavaScript?
+How can you check if an object is empty in JavaScript?
+How do you check if a value is an array?
+What is the difference between Object.keys(), Object.values(), and Object.entries()?
+How would you handle nested destructuring with default values in JavaScript?
+How would you write a function that checks the data type of a variable?
+How can you dynamically add properties to an object in JavaScript?
+How would you flatten a deeply nested array in JavaScript?
+Example: [[1, 2], [3, [4, 5]]] → [1, 2, 3, 4, 5]
+
+
+Code Challenges
+Write a function to find duplicate values in an array.
+Create a function to determine whether a given string is a palindrome.
+Write a function to count the number of occurrences of each character in a string.
+Implement a function to remove all falsy values from an array.
+Write a function to group an array of objects by a specific property.

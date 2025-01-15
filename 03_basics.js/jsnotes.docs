@@ -1,0 +1,82 @@
+Javascript Execution execute
+
+browser execution in this value is window object
+
+//interview questions
+
+1.Global Executio contect  //main
+2.Function Execution Context//main
+3.Eval Execution Context 
+
+
+1.Memory creation phase 
+2.Execution phase
+
+
+//code
+let val1 = 10;
+let val2 =5;
+
+funtion addNum(num1,num2){
+    let total = num1 +num2;
+    return total
+}
+let result1 = addNum(num1,num2)
+let result12 = addNum(76,56)
+
+
+Global Execution:
+
+memory phase:
+val1 -> undefined
+val2 -> undefined
+addNum _>defination
+result1 =undefined
+result12 = undefined
+//complete first cycle
+
+2:Execution Phase:
+val1 = 10 
+val2 = 5
+addNum =
+
+newvariable enviorment +Execution thread //global excution context after work deleted
+
+memory phase  
+val1 ->undefined 
+val2 -> undefined 
+total ->undefined 
+
+execution Context
+num1 = 10
+num2 = 5 
+total ->15
+
+
+Memory phase:
+Execution Phase:
+
+new variable execution :
++ thread
+
+call stack:
+
+
+function one() {
+    console.log("one")
+}
+function two() {
+    console.log("two")
+}
+function three() {
+    console.log("three")
+}
+
+one()
+two()
+three()
+
+console on using snippest on create js file 
+debug code and cheak call stack
+
+25 video return cheack 

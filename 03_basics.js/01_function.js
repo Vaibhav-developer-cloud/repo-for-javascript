@@ -32,7 +32,6 @@ function addTwoNumbers(number1,number2){
 const result = addTwoNumbers(67,76) 
 console.log("Results:",result) 
 
-
 function loginUserMessage(username){
     if(username=== undefined){
         console.log("please enter a username");
@@ -43,14 +42,11 @@ function loginUserMessage(username){
 console.log(loginUserMessage("vaibhav")) // empty variable return undefined
 // console.log(loginUserMessage())
 
-
 //function with objects and array
 function calculatecartprice(val1,val2,...num1){ //... rest operatos means merge all varaibles and stored in one variable like arrasy
     return num1  //op num2=500,2000 becase val1=200,val2=400
 }
-
 console.log(calculatecartprice(200,400,500,2000))
-
 const user ={
     username : "Vaibhav",
     price:199    //change prices change name
@@ -59,16 +55,13 @@ const user ={
 function handleObject(anyobject){
     console.log(`username is ${anyobject.username} and price is ${anyobject.price}`);
 }
-
 // handleObject(user)
-
 handleObject({username:"Niket",
     price:299
 })
-
 const myNewArray =[200,400,100,600]
-
 function returnSecondValue(getArray){
     return getArray[1]
 }
 console.log(returnSecondValue([200,400,500,10000]))
+
